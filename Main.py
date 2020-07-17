@@ -61,7 +61,8 @@ def main(argv):
         elif opt in ("-d", "--domain"):
             domain = arg
         elif opt in ("-p", "--ports"):
-            ports = "1-" + arg
+            if int(arg) >= 1 and int(arg) <= 65535:
+                ports = "1-" + arg
         elif opt in ("-i", "--install"):
             install_and_import('nmap') # for scan IP
             install_and_import('csv') # Exel part (save)
