@@ -28,6 +28,12 @@ You can install these modules in two ways:
   ```
   
 ## Usage
+First of all, setup a virtualenv
+```
+$ python -m venv venv
+$ source venv/bin/activate
+```
+
 This small application need a domain name. You can also define a number of port to test (default: 1000 / max: 65535)
 ```
 $ python3.8 Main.py -d <domain.name> -d <ports>
