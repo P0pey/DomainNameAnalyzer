@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#Author: maxime.chardon, Stage EPITA SPE
+#Author: Popey
 
 # --------------------------------------------------------------------------------------------------------------------- #
 
@@ -67,13 +67,11 @@ domain = 'megacorpone.com'
 # --------------------------------------------------------------------------------------------------------------------- #
 
 SubList = ScannerSubDomain.ScanSubDom(domain, OutputName, logs)
-'''
 path = ScannerSubDomain.SaveSubDom(SubList, OutputName, logs)
 ScannerServer.SaveQuery(domain, OutputName,logs)
 List_IP_SubDomain = ScannerIP.IP_sort(path, logs)
 List_IP_SubDomain_Scan = ScannerIP.Scanner(List_IP_SubDomain, ports, logs)
 ScannerIP.SaveData(List_IP_SubDomain_Scan, OutputName, logs)
-'''
 WhoisList = ScannerWhois.WhoisScan(SubList, logs)
 ScannerWhois.ParseJson(WhoisList, OutputName, logs)
 # --------------------------------------------------------------------------------------------------------------------- #

@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-#Author: maxime.chardon, Stage EPITA SPE
+#Author: Popey
 
 # --------------------------------------------------------------------------------------------------------------------- #
 
@@ -34,9 +34,9 @@ def ParseJson(JsonList, name, logs):
             json = JsonList[i][2]
             ip = JsonList[i][0]
             sub = JsonList[i][1]
-            creation = json["creation_date"][0]
-            update = json["updated_date"][0]
-            expir = json["expiration_date"][0]
+            creation = json["creation_date"]
+            update = json["updated_date"]
+            expir = json["expiration_date"]
             name = 'N/A'
             if json["name"]:
                 name = json["name"]
