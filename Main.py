@@ -45,6 +45,18 @@ if not os.path.exists('./Logs'):
     os.mkdir('./Logs')
     print("Directory Logs Created ")
 
+def print_help():
+    print("Usage:\n")
+    print("  -i --install [all]: Install packages:")
+    print("      $ Main.py -i all\n")
+    print("  -d --domain [domain.name]: Give the script the domain name")
+    print("      $ Main.py -d google.com\n")
+    print("  -p --ports [ports]: Give the number of ports to test. Default: 1000. Maximum: 65535")
+    print("      $ Main.py -p 100\n")
+    print("Example:\n")
+    print("  $ Main.py -d google.com -p 1000")
+
+
 # Main function
 def main(argv):
     domain = ""
@@ -52,17 +64,20 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv,"hi:d:p:",["install=","domain=","ports="])
     except getopt.GetoptError:
-        print('Main.py -i all\nOr\nMain.py -d <Domain Name> -p <max ports number: default 1000>')
+        print_help()
         sys.exit(2)
     for opt, arg in opts:
         if opt == '-h':
-            print('Main.py -i all\nOr\nMain.py -d <Domain Name> -p <max ports number: default 1000>')
+            print_help()
             sys.exit()
         elif opt in ("-d", "--domain"):
             domain = arg
         elif opt in ("-p", "--ports"):
             if int(arg) >= 1 and int(arg) <= 65535:
                 ports = "1-" + arg
+            else:
+                print_help()
+                sys.exit()
         elif opt in ("-i", "--install"):
             install_and_import('nmap') # for scan IP
             install_and_import('csv') # Exel part (save)
